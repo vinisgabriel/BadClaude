@@ -1,42 +1,33 @@
-# OpenWhip
+OpenWhip
+Às vezes o Claude Code está muito lento, e você precisa dar uma chicotada nele para entrar nos eixos...
 
-![Whip divider](assets/divider.png)
-
-Sometimes claude code is going too shlow, and you must whip him into shape..
-
-## Install + run
-
-```bash
+Instalação + Execução
+Bash
 npm install -g openwhip
 openwhip
-```
+Windows e Mac são suportados nativamente, mas o Linux é um caso especial, então você precisa instalar o xdotool para automação do teclado:
 
-windows and mac supported out of the box, but Linux is a special snowflake so you need to install `xdotool` for keyboard automation
-
-```bash
+Bash
 sudo apt install xdotool
-```
+Controles
+Clique no ícone da barra de tarefas: faz surgir o chicote.
 
-## Controls
+Clique: solta o chicote.
 
-- Click tray icon: spawn whip.
-- Click: drop whip.
-- Whip him 😩💢
-- It sends an interrupt (Ctrl-C) and one of 5 encouraging messages!
+Dê uma chicotada nele 😩💢
 
-## Roadmap
+Envia uma interrupção (Ctrl-C) e uma de 5 mensagens encorajadoras!
 
-- [x] Initial release! 🥳
-- [x] Cease and desist letter from Anthropic
-- [ ] Crypto miner
-- [ ] Logs of how many times you whipped claude so when the robots come we can order people nicely for them
-- [ ] Updated whip physics
+Roteiro de Desenvolvimento (Roadmap)
+[x] Lançamento inicial! 🥳
 
-## Ecosystem
+[x] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
 
-The OFFICAL openwhip ecosystem token. 
+[ ] Minerador de criptomoedas
 
-Contract address: BRyUZbJkm9Pty4FUmTrBGno7U4Ga8TWzcKJJRLCBpump
+[ ] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
 
-Stay tuned for updates on X! 👀
-https://x.com/blended_jpeg
+[ ] Física do chicote atualizada
+
+Ecossistema
+O token OFICIAL do ecossistema OpenWhip.

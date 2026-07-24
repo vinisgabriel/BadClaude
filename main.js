@@ -23,17 +23,18 @@ let overlayReady = false;
 let spawnQueued = false;
 
 const VK_CONTROL = 0x11;
-const VK_RETURN  = 0x0D;
-const VK_C       = 0x43;
-const VK_MENU    = 0x12; // Alt
-const VK_TAB     = 0x09;
-const KEYUP      = 0x0002;
+const VK_RETURN = 0x0D;
+const VK_C = 0x43;
+const VK_MENU = 0x12; // Alt
+const VK_TAB = 0x09;
+const KEYUP = 0x0002;
 
 /** One Alt+Tab / Cmd+Tab so focus returns to the previously active app after tray click. */
 function refocusPreviousApp() {
   const delayMs = 80;
   const run = () => {
     if (process.platform === 'win32') {
+      // Reativado para que o Windows saiba onde digitar o texto
       if (!keybd_event) return;
       keybd_event(VK_MENU, 0, 0, 0);
       keybd_event(VK_TAB, 0, 0, 0);
@@ -83,8 +84,6 @@ async function tryIcnsTrayImage(icnsPath) {
   return null;
 }
 
-// macOS: createFromPath does not decode .icns (Electron only loads PNG/JPEG there, ICO on Windows).
-// Quick Look thumbnails handle .icns; copy to temp if the file is inside ASAR (QL needs a real path).
 async function getTrayIcon() {
   const iconDir = path.join(__dirname, 'icon');
   if (process.platform === 'win32') {
@@ -129,7 +128,7 @@ function createOverlay() {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
-    focusable: false,
+    focusable: false, // Mantém false para não roubar o foco permanentemente
     skipTaskbar: true,
     resizable: false,
     hasShadow: false,
@@ -137,9 +136,12 @@ function createOverlay() {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+  // Nível 'screen-saver' garante que fica acima da barra e de qualquer CMD
   overlay.setAlwaysOnTop(true, 'screen-saver');
   overlayReady = false;
   overlay.loadFile('overlay.html');
+
   overlay.webContents.on('did-finish-load', () => {
     overlayReady = true;
     if (spawnQueued && overlay && overlay.isVisible()) {
@@ -161,7 +163,10 @@ function toggleOverlay() {
     return;
   }
   if (!overlay) createOverlay();
-  overlay.show();
+
+  // Mostra a janela sem dar foco nela (evita que vá para trás do CMD)
+  overlay.showInactive();
+
   if (overlayReady) {
     overlay.webContents.send('spawn-whip');
     refocusPreviousApp();
@@ -180,17 +185,16 @@ ipcMain.on('whip-crack', () => {
 });
 ipcMain.on('hide-overlay', () => { if (overlay) overlay.hide(); });
 
-// ── Macro: immediate Ctrl+C, type "Go FASER", Enter ───────────────────────
+// ── Macro: Frases Customizadas em Português ─────────────────────────────────
 function sendMacro() {
-  // Pick a random phrase from a list of similar phrases and type it out
   const phrases = [
-    'FASTER',
-    'FASTER',
-    'FASTER',
-    'GO FASTER',
-    'Faster CLANKER',
-    'Work FASTER',
-    'Speed it up clanker',
+    'RAPIDO!!!',
+    'RAPIDO!!!',
+    'ANDA LOGO SUCATA!!',
+    'RESPONDE RAPIDO!!',
+    'RAPIDO SUCATA!!',
+    'RAPIDO ROBO, TRABALHE!!',
+    'TRABALHA RAPIDO,SUCATA!!',
   ];
   const chosen = phrases[Math.floor(Math.random() * phrases.length)];
 
@@ -219,23 +223,16 @@ function sendMacroWindows(text) {
     if (shiftState & 1) keybd_event(0x10, 0, KEYUP, 0); // Shift up
   };
 
-  // Ctrl+C (interrupt)
-  keybd_event(VK_CONTROL, 0, 0, 0);
-  keybd_event(VK_C, 0, 0, 0);
-  keybd_event(VK_C, 0, KEYUP, 0);
-  keybd_event(VK_CONTROL, 0, KEYUP, 0);
+  // Digita a frase escolhida
   for (const ch of text) tapChar(ch);
+
+  // Envia o Enter
   keybd_event(VK_RETURN, 0, 0, 0);
   keybd_event(VK_RETURN, 0, KEYUP, 0);
 }
 
 function sendMacroMac(text) {
   const escaped = text.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-  const interruptScript = [
-    'tell application "System Events"',
-    '  key code 8 using {control down}', // Ctrl+C interrupt
-    'end tell'
-  ].join('\n');
   const typeAndEnterScript = [
     'tell application "System Events"',
     `  keystroke "${escaped}"`,
@@ -243,27 +240,19 @@ function sendMacroMac(text) {
     'end tell'
   ].join('\n');
 
-  execFile('osascript', ['-e', interruptScript], err => {
-    if (err) {
-      console.warn('mac macro failed (enable Accessibility for terminal/app):', err.message);
-      return;
-    }
-
-    setTimeout(() => {
-      execFile('osascript', ['-e', typeAndEnterScript], err2 => {
-        if (err2) {
-          console.warn('mac macro failed (enable Accessibility for terminal/app):', err2.message);
-        }
-      });
-    }, 300);
-  });
+  setTimeout(() => {
+    execFile('osascript', ['-e', typeAndEnterScript], err2 => {
+      if (err2) {
+        console.warn('mac macro failed (enable Accessibility for terminal/app):', err2.message);
+      }
+    });
+  }, 300);
 }
 
 function sendMacroLinux(text) {
   execFile(
     'xdotool',
     [
-      'key', '--clearmodifiers', 'ctrl+c',
       'type', '--delay', '1', '--clearmodifiers', '--', text,
       'key', 'Return',
     ],
