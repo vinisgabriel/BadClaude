@@ -24,7 +24,7 @@ sudo apt install xdotool
 
 -Dê uma chicotada nele 😩💢
 
--Envia a mensagem (Enter) e uma de 5 mensagens encorajadoras!
+-Escolhe uma das 5 mensagens encorajadoras e envia com enter!
 
 ## Roteiro de Desenvolvimento (Roadmap)
 - [x] Lançamento inicial! 🥳
