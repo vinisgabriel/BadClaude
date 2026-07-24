@@ -1,5 +1,7 @@
-OpenWhip
-Às vezes o Claude Code está muito lento, e você precisa dar uma chicotada nele para entrar nos eixos...
+Badclaude
+<img width="520" height="63" alt="divider" src="https://github.com/user-attachments/assets/f276efa8-81bf-4ccd-85da-8c30b44df189" />
+
+Às vezes o Chat GPT  está muito lento, e você precisa dar uma chicotada nele para entrar nos eixos...
 
 Instalação + Execução
 Bash
