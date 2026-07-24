@@ -1,37 +1,38 @@
-Badclaude
+#Badclaude
 
 
 <img width="520" height="63" alt="divider" src="https://github.com/user-attachments/assets/f276efa8-81bf-4ccd-85da-8c30b44df189" />
 
 Às vezes o Chat GPT  está muito lento, e você precisa dar uma chicotada nele para entrar nos eixos...
 
-Instalação + Execução
-Bash
+##Instalação + Execução
+
+```Bash
 npm install -g openwhip
 openwhip
-Windows e Mac são suportados nativamente, mas o Linux é um caso especial, então você precisa instalar o xdotool para automação do teclado:
+```
+Windows e Mac são suportados nativamente, mas o Linux é um caso especial, então você precisa instalar o `xdotool` para automação do teclado:
 
-Bash
+```Bash
 sudo apt install xdotool
-Controles
-Clique no ícone da barra de tarefas: faz surgir o chicote.
+```
+##Controles
 
-Clique: solta o chicote.
+-Clique no ícone da barra de tarefas: faz surgir o chicote.
+-Clique: solta o chicote.
+-Dê uma chicotada nele 😩💢
+-Envia a mensagem (Enter) e uma de 5 mensagens encorajadoras!
 
-Dê uma chicotada nele 😩💢
+## Roteiro de Desenvolvimento (Roadmap)
+- [x] Lançamento inicial! 🥳
 
-Envia uma interrupção (Ctrl-C) e uma de 5 mensagens encorajadoras!
+- [x] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
 
-Roteiro de Desenvolvimento (Roadmap)
-[x] Lançamento inicial! 🥳
+- [ ] Minerador de criptomoedas
 
-[x] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
+- [ ] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
 
-[ ] Minerador de criptomoedas
+- [ ] Física do chicote atualizada
 
-[ ] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
-
-[ ] Física do chicote atualizada
-
-Ecossistema
+## Ecossistema
 O token OFICIAL do ecossistema OpenWhip.
