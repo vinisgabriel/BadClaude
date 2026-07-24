@@ -19,8 +19,11 @@ sudo apt install xdotool
 ## Controles
 
 -Clique no ícone da barra de tarefas: faz surgir o chicote.
+
 -Clique: solta o chicote.
+
 -Dê uma chicotada nele 😩💢
+
 -Envia a mensagem (Enter) e uma de 5 mensagens encorajadoras!
 
 ## Roteiro de Desenvolvimento (Roadmap)
