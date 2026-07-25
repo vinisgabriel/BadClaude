@@ -27,15 +27,15 @@ sudo apt install xdotool
 -Escolhe uma das 5 mensagens encorajadoras e envia com enter!
 
 ## Roteiro de Desenvolvimento (Roadmap)
-- [x] Lançamento inicial! 🥳
+- [✅️] Lançamento inicial! 🥳
 
-- [x] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
+- [✅️] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
 
-- [ ] Minerador de criptomoedas
+- [❌️] Minerador de criptomoedas
 
-- [ ] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
+- [❌️] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
 
-- [ ] Física do chicote atualizada
+- [❌️] Física do chicote atualizada
 
 ## Ecossistema
 O token OFICIAL do ecossistema OpenWhip.
