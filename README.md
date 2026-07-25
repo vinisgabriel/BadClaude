@@ -29,11 +29,11 @@ sudo apt install xdotool
 ## Roteiro de Desenvolvimento (Roadmap)
 - [✅️] Lançamento inicial! 🥳
 
-- [✅️] Carta de Cease and Desist (Notificação Extrajudicial) da Anthropic
+- [✅️] Carta de Cease and Desist (Notificação Extrajudicial) da OpenAI
 
 - [❌️] Minerador de criptomoedas
 
-- [❌️] Registros de quantas vezes você chicoteou o Claude para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
+- [❌️] Registros de quantas vezes você chicoteou o GPT para que, quando os robôs dominarem, possamos organizar as pessoas organizadamente para eles
 
 - [❌️] Física do chicote atualizada
 
